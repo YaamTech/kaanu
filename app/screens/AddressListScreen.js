@@ -54,18 +54,18 @@ class AddressListScreen extends Component {
            <ActionButton buttonColor="rgba(231,76,60,1)">
               <ActionButton.Item buttonColor="rgba(231,76,60,1)"
                 title="Aller a"
-                onPress={() => {}}>
+                onPress={() => {return this.allerA()}}>
                 <Text> Aller a </Text>
               </ActionButton.Item>
               <ActionButton.Item buttonColor="rgba(231,76,60,1)"
                 title="Ajouter"
-                onPress={() => {}} >
+                onPress={() => {return this.ajouterAddress()}} >
                 <Text> Ajouter </Text>
               </ActionButton.Item>
 
               <ActionButton.Item buttonColor="rgba(231,76,60,1)"
                 title="Creer"
-                onPress={() => {}} >
+                onPress={() => {return this.creerAddress()}} >
                 <Text> Creer </Text>
               </ActionButton.Item>
            </ActionButton>
@@ -79,6 +79,24 @@ class AddressListScreen extends Component {
       );
   }
 
+  allerA(){
+    this.props.navigator.push({
+      ident: "AllerAddressScreen"
+    })
+  }
+
+  ajouterAddress(){
+    this.props.navigator.push({
+      ident: "AjoutAddressScreen"
+    })
+  }
+
+  creerAddress(){
+    this.props.navigator.push({
+      ident: "CreerAddressScreen"
+    })
+
+  }
 
 }
 

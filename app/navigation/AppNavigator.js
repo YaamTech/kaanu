@@ -12,7 +12,7 @@ import AddressListScreen from '../screens/AddressListScreen'
 import AddressListScreenWithoutCreate from '../screens/AddressListScreenWithoutCreate'
 import AjoutAddressScreen from '../screens/AjoutAddressScreen'
 import CreerAddressScreen from '../screens/CreerAddressScreen'
-import ChercherAddressScreen from '../screens/ChercherAddressScreen'
+import AllerAddressScreen from '../screens/AllerAddressScreen'
 
 class AppNavigator extends Component {
 
@@ -43,9 +43,9 @@ class AppNavigator extends Component {
             {...globalNavigatorProps}
           />
         )
-      case "ChercherAddressScreen":
+      case "AllerAddressScreen":
         return (
-          <ChercherAddressScreen
+          <AllerAddressScreen
             {...globalNavigatorProps}
           />
         )
