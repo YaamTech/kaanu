@@ -17,18 +17,9 @@ const ownAddress = Realm.objects('CreateOwnAddress');
 class kaanu extends Component {
 
   render() {
-
-    var defaultScreen;
-    if(ownAddress.created){
-      defaultScreen = {ident: "AddressListScreenWithoutCreate"}
-    }
-    else{
-      defaultScreen = {ident: "AddressListScreen"}
-    }
-
     return (
         <AppNavigator
-          initialRoute={defaultScreen}
+          initialRoute={{ident: "AddressListScreen"}}
           />
     );
   }

@@ -7,6 +7,7 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native';
+import Realm from '../models/Realm'
 import ViewContainer from '../components/ViewContainer'
 import StatusBar from '../components/StatusBar'
 import AddButton from '../components/AddButton'
@@ -17,6 +18,7 @@ class CreerAddressScreen extends Component{
     this.state = {
       addressName: "",
       ownerPhone: "",
+      addressWords:"",
       initialPosition: 'unknown'
     };
     navigator.geolocation.getCurrentPosition(
@@ -39,18 +41,35 @@ class CreerAddressScreen extends Component{
               (addressName) => {this.setState({addressName})}
             }
             value={this.state.addressName}
-            placeholder="Entrez le nom de cette addresse. Ex: Ma maison"
          />
+         <Text
+          style={styles.textBelow}>
+         Entrez le nom de cette addresse ci-dessus. {"\n"} Ex: Ma maison
+         </Text>
 
          <TextInput
            style={styles.textEditOwnerPhone}
            onChangeText={(ownerPhone) => this.setState({ownerPhone})}
            value={this.state.ownerPhone}
-           placeholder="Entrez le numero de ce telephone. Ex: +22676898321"
          />
+         <Text
+          style={styles.textBelow}>
+         Entrez le numero de ce telephone. Le code du pays est important. {"\n"} Ex: +22676898321
+         </Text>
+
+         <TextInput
+           style={styles.textEditOwnerPhone}
+           onChangeText={(addressWords) => this.setState({addressWords})}
+           value={this.state.addressWords}
+         />
+         <Text
+          style={styles.textBelow}>
+          Entrez 3 mots de votre choix comme addresse. Votre addresse doit etre unique. {"\n"} Ex: peace.wakat.fan
+        </Text>
+
        </View>
        <AddButton title="Creer"
-          onPress={this.creerAddress.bind(this)}/>
+          onPress={() => {return this.creerAddress()}}/>
       </ViewContainer>
     )
   }
@@ -59,24 +78,39 @@ class CreerAddressScreen extends Component{
     var CurPosCoords = this.state.initialPosition.coords;
     // var lat = '51.521251'
     // var lng = '-0.203586'
-    
-    fetch('https://api.what3words.com/v2/reverse?coords='+CurPosCoords.latitude+','+CurPosCoords.longitude+'&key=OO133IOY', {
+    ///:lat/:lng/:phone/:words
+    //addressName, ownerPhone, addressWords
+    fetch("http://localhost:9393/"+CurPosCoords.latitude+"/"+CurPosCoords.longitude+"/"+this.state.ownerPhone+"/"+this.state.addressWords, {
       method: 'GET',
       headers: {}
     })
     .then((response) =>{
-      var data = response.json().then(
-        function(json){
-          console.log(json.words)
-        }
-      );
+      var anotherThis = this;
+      var data = response.json()
+      .then(function(json){
+          if(json == "ok"){
+            //Cannot create anymore from this phone (maybe will not add)
+            //And add the data to Realm database
+            //console.log(this.state.addressName, this.state.addressWords, this.state.ownerPhone)
+            Realm.write(()=>{
+              Realm.create('Address', {addressName: anotherThis.state.addressName, addressWords: anotherThis.state.addressWords, ownerPhone: anotherThis.state.ownerPhone});
+            });
+            anotherThis.props.navigator.pop();
+            console.log("Data added");
+          }
+          if(json == "not ok"){
+            console.log("not ok")
+          }
+          if(json == "Exist"){
+            console.log("Exist")
+          }
+        });
     })
     .catch((error) => {
       console.log(error);
     });
     //CurPosCoords.latitude, CurPosCoords.longitude
     //console.log(lat, lng);
-
   }
 
 }
@@ -85,7 +119,7 @@ const styles = StyleSheet.create({
   textEditAddressName: {
     marginLeft: 10,
     marginRight: 10,
-    marginTop:40,
+    marginTop:30,
     height: 40,
     borderColor: 'grey',
     backgroundColor: 'white',
@@ -94,7 +128,7 @@ const styles = StyleSheet.create({
   textEditOwnerPhone: {
     marginLeft: 10,
     marginRight: 10,
-    marginTop:80,
+    marginTop:70,
     height: 40,
     borderColor: 'grey',
     backgroundColor: 'white',
@@ -102,6 +136,11 @@ const styles = StyleSheet.create({
   },
   inputs: {
     flex: 1
+  },
+  textBelow: {
+    alignItems:"center",
+    textAlign: "center",
+    margin: 10
   }
 });
 

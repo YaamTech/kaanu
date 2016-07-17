@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import AddressListScreen from '../screens/AddressListScreen'
-import AddressListScreenWithoutCreate from '../screens/AddressListScreenWithoutCreate'
 import AjoutAddressScreen from '../screens/AjoutAddressScreen'
 import CreerAddressScreen from '../screens/CreerAddressScreen'
 import AllerAddressScreen from '../screens/AllerAddressScreen'
@@ -22,12 +21,6 @@ class AppNavigator extends Component {
       case "AddressListScreen":
         return (
           <AddressListScreen
-            {...globalNavigatorProps}
-          />
-        )
-      case "AddressListScreenWithoutCreate":
-      return (
-          <AddressListScreenWithoutCreate
             {...globalNavigatorProps}
           />
         )
