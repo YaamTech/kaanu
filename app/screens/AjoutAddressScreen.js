@@ -5,6 +5,7 @@ import {
   Text,
   View,
   TextInput,
+  Alert,
   StyleSheet
 } from 'react-native';
 import Realm from '../models/Realm'
@@ -29,7 +30,7 @@ class AjoutAddressScreen extends Component{
        <View style={styles.inputs}>
            <TextInput
               style={styles.textEditAddressName}
-              onChangeText={(text) => this.setState({text})}
+              onChangeText={(addressName) => this.setState({addressName})}
               value={this.state.addressName}
            />
 
@@ -40,7 +41,7 @@ class AjoutAddressScreen extends Component{
 
            <TextInput
              style={styles.textEditWords}
-             onChangeText={(text) => this.setState({text})}
+             onChangeText={(words) => this.setState({words})}
              value={this.state.words}
            />
            <Text
@@ -55,7 +56,8 @@ class AjoutAddressScreen extends Component{
   }
 
   addAdress(){
-    fetch("http://localhost:9393/"+CurPosCoords.latitude+"/"+CurPosCoords.longitude+"/"+this.state.ownerPhone+"/"+this.state.addressWords, {
+    // /check/:words
+    fetch("http://localhost:9393/check/"+this.state.words, {
       method: 'GET',
       headers: {}
     })
@@ -63,14 +65,30 @@ class AjoutAddressScreen extends Component{
       var anotherThis = this;
       var data = response.json()
       .then(function(json){
-          if(json == "ok"){
-            //Cannot create anymore from this phone (maybe will not add)
+          var check_done = json["table"]
+          if(check_done["answer"] == true){
+            var addresses = check_done["addresses"]
+            addresses = addresses.map(function(address){
+              return address["ownerphone"];
+            });
+            console.log(addresses)
+
             //And add the data to Realm database
-            //console.log(this.state.addressName, this.state.addressWords, this.state.ownerPhone)
             Realm.write(()=>{
-              Realm.create('Address', {addressName: anotherThis.state.addressName, addressWords: anotherThis.state.addressWords, ownerPhone: anotherThis.state.ownerPhone});
+              Realm.create('Address', {addressName: anotherThis.state.addressName, addressWords: anotherThis.state.words, ownerPhone: addresses.toString()});
             });
             anotherThis.props.navigator.pop();
+          }
+          if(check_done["answer"] == false){
+            //Alert to notify that this address does not exist
+            var message = "Cette addresse n'"+"existe pas. Ou alors vous l'"+"avez mal entree";
+            Alert.alert(
+                'Probleme avec cette address',
+                message,
+                  [
+                    {text: 'OK', onPress: () => console.log('OK Pressed')}
+                  ]
+            )
           }
         });
     })
