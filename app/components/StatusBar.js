@@ -27,17 +27,19 @@ class StatusBar extends Component{
 const styles = StyleSheet.create({
   statusBar: {
     backgroundColor: 'white',
-    height: 30
+    height: 16,
+    marginTop: 0
   },
   navBar: {
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#24CE84',
     borderBottomColor: '#eee',
     borderColor: 'transparent',
     justifyContent: 'center',
     borderWidth: 1,
-    height: 48,
-    flexDirection: 'row'
+    height: 45,
+    flexDirection: 'row',
+    marginTop: 16
   },
   navBarTitle: {
     color: '#444',

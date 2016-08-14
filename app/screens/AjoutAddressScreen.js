@@ -57,7 +57,7 @@ class AjoutAddressScreen extends Component{
 
   addAdress(){
     // /check/:words
-    fetch("http://localhost:9393/check/"+this.state.words, {
+    fetch("https://kaanu-center.herokuapp.com/check/"+this.state.words, {
       method: 'GET',
       headers: {}
     })
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   textEditAddressName: {
     marginLeft: 10,
     marginRight: 10,
-    marginTop:40,
+    marginTop:50,
     height: 40,
     borderColor: 'grey',
     backgroundColor: 'white',
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   textEditWords: {
     marginLeft: 10,
     marginRight: 10,
-    marginTop:80,
+    marginTop:90,
     height: 40,
     borderColor: 'grey',
     backgroundColor: 'white',

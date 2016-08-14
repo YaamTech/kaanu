@@ -9,6 +9,7 @@ import {
   Alert,
   View,
   ListView,
+  RefreshControl,
   Text
 } from 'react-native';
 import Realm from '../models/Realm'
@@ -16,7 +17,6 @@ import ViewContainer from '../components/ViewContainer'
 import StatusBar from '../components/StatusBar'
 import ListItem from '../components/ListItem'
 import ActionButton from 'react-native-action-button'
-import Icon from 'react-native-vector-icons/Ionicons'
 
 // const addresses = [
 //   {addressName: "My House", addressWords: "sankara.rue.douze", ownerPhone: "77898753"},
@@ -35,15 +35,16 @@ const addresses = Realm.objects('Address');
 class AddressListScreen extends Component {
   constructor(props){
       super(props);
-      var ds = new ListView.DataSource({
-        rowHasChanged: (row1, row2) => row1 !== row2
-      });
-      this.state = {
-        addressDataSource: ds.cloneWithRows(addresses)
-      };
   }
 
   render() {
+    var ds = new ListView.DataSource({
+      rowHasChanged: (row1, row2) => row1 !== row2
+    });
+    this.state = {
+      addressDataSource: ds.cloneWithRows(addresses)
+    };
+
     return (
         <ViewContainer>
          <StatusBar title="Addresses"/>
@@ -51,19 +52,21 @@ class AddressListScreen extends Component {
             dataSource={this.state.addressDataSource}
             renderRow={(address) => { return this.renderAddressView(address)}}
             style={styles.listView} />
-           <ActionButton buttonColor="rgba(231,76,60,1)">
-              <ActionButton.Item buttonColor="rgba(231,76,60,1)"
-                title="Aller a"
-                onPress={() => {return this.allerA()}}>
-                <Text> Aller a </Text>
-              </ActionButton.Item>
-              <ActionButton.Item buttonColor="rgba(231,76,60,1)"
-                title="Ajouter"
+           <ActionButton buttonColor="rgba(36, 206, 132, 1)">
+
+           <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
+             title="Beta"
+             onPress={() => {return this.showBetaInfo()}} >
+             <Text> Beta </Text>
+           </ActionButton.Item>
+
+              <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
+                title="Carnet"
                 onPress={() => {return this.ajouterAddress()}} >
-                <Text> Ajouter </Text>
+                <Text> Carnet </Text>
               </ActionButton.Item>
 
-              <ActionButton.Item buttonColor="rgba(231,76,60,1)"
+              <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
                 title="Creer"
                 onPress={() => {return this.creerAddress()}} >
                 <Text> Creer </Text>
@@ -79,11 +82,21 @@ class AddressListScreen extends Component {
       );
   }
 
-  allerA(){
-    this.props.navigator.push({
-      ident: "AllerAddressScreen"
-    })
+  showBetaInfo(){
+
   }
+
+  // allerA(){
+  //   // In the render part
+  //   // <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
+  //   //   title="Aller a"
+  //   //   onPress={() => {return this.allerA()}}>
+  //   //   <Text> Aller a </Text>
+  //   // </ActionButton.Item>
+  //   this.props.navigator.push({
+  //     ident: "AllerAddressScreen"
+  //   })
+  // }
 
   ajouterAddress(){
     this.props.navigator.push({
@@ -103,7 +116,7 @@ class AddressListScreen extends Component {
 const styles = StyleSheet.create({
   listView: {
     flex: 1,
-    marginTop: 20
+    marginTop: 45
   },
   actionButtonIcon: {
     fontSize: 20,

@@ -26,22 +26,9 @@ class AllerAddressScreen extends Component{
           region={this.state.mapRegion}
           style={styles.map}
         />
-        <ActionButton buttonColor="rgba(231,76,60,1)">
-           <ActionButton.Item buttonColor="rgba(231,76,60,1)"
-             title="Aller a"
-             onPress={() => {}} >
-             <Text> Aller a </Text>
-           </ActionButton.Item>
-           <ActionButton.Item buttonColor="rgba(231,76,60,1)"
-             title="A parti de"
-             onPress={() => {}} >
-             <Text> A parti de </Text>
-           </ActionButton.Item>
-        </ActionButton>
       </ViewContainer>
     )
   }
-
 
 }
 

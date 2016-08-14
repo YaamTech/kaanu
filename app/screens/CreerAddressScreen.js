@@ -32,7 +32,7 @@ class CreerAddressScreen extends Component{
   render(){
     return(
       <ViewContainer>
-       <StatusBar title="Creer une address"/>
+       <StatusBar title="Créer une addresse"/>
        <View style={styles.inputs}>
          <TextInput
             style={styles.textEditAddressName}
@@ -80,7 +80,7 @@ class CreerAddressScreen extends Component{
     // var lng = '-0.203586'
     ///:lat/:lng/:phone/:words
     //addressName, ownerPhone, addressWords
-    fetch("http://localhost:9393/"+CurPosCoords.latitude+"/"+CurPosCoords.longitude+"/"+this.state.ownerPhone+"/"+this.state.addressWords, {
+    fetch("https://kaanu-center.herokuapp.com/"+CurPosCoords.latitude+"/"+CurPosCoords.longitude+"/"+this.state.ownerPhone+"/"+this.state.addressWords, {
       method: 'GET',
       headers: {}
     })
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   textEditAddressName: {
     marginLeft: 10,
     marginRight: 10,
-    marginTop:30,
+    marginTop:50,
     height: 40,
     borderColor: 'grey',
     backgroundColor: 'white',
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   textEditOwnerPhone: {
     marginLeft: 10,
     marginRight: 10,
-    marginTop:70,
+    marginTop:80,
     height: 40,
     borderColor: 'grey',
     backgroundColor: 'white',
