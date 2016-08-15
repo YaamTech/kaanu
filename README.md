@@ -1,0 +1,1 @@
+Kaanu is still in development. It uses react-native.
