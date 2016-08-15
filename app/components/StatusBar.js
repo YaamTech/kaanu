@@ -10,13 +10,11 @@ import {
 class StatusBar extends Component{
   render(){
     return(
-        <View style={styles.statusBar}>
-          <View style={styles.navBar}>
+          <View style={styles.statusBar}>
             <Text style ={styles.navBarTitle}>
               {this.props.title}
             </Text>
           </View>
-        </View>
 
     );
 
@@ -26,11 +24,6 @@ class StatusBar extends Component{
 
 const styles = StyleSheet.create({
   statusBar: {
-    backgroundColor: 'white',
-    height: 16,
-    marginTop: 0
-  },
-  navBar: {
     alignItems: 'center',
     backgroundColor: '#24CE84',
     borderBottomColor: '#eee',
@@ -38,8 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     height: 45,
-    flexDirection: 'row',
-    marginTop: 16
+    flexDirection: 'row'
   },
   navBarTitle: {
     color: '#444',

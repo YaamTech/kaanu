@@ -9,7 +9,6 @@ import {
   Alert,
   View,
   ListView,
-  RefreshControl,
   Text
 } from 'react-native';
 import Realm from '../models/Realm'
@@ -47,7 +46,7 @@ class AddressListScreen extends Component {
 
     return (
         <ViewContainer>
-         <StatusBar title="Addresses"/>
+        //  <StatusBar title="Adresses"/>
          <ListView
             dataSource={this.state.addressDataSource}
             renderRow={(address) => { return this.renderAddressView(address)}}
@@ -55,21 +54,27 @@ class AddressListScreen extends Component {
            <ActionButton buttonColor="rgba(36, 206, 132, 1)">
 
            <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
-             title="Beta"
+             title="Besoin d'aide?"
+             onPress={() => {return this.help()}} >
+             <Text>Aide</Text>
+           </ActionButton.Item>
+
+           <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
+             title="Version beta"
              onPress={() => {return this.showBetaInfo()}} >
-             <Text> Beta </Text>
+             <Text>Beta</Text>
            </ActionButton.Item>
 
               <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
-                title="Carnet"
+                title="Carnet d'adresses"
                 onPress={() => {return this.ajouterAddress()}} >
-                <Text> Carnet </Text>
+                <Text>Carnet</Text>
               </ActionButton.Item>
 
               <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
-                title="Creer"
+                title="Creer une adresse"
                 onPress={() => {return this.creerAddress()}} >
-                <Text> Creer </Text>
+                <Text>Creer</Text>
               </ActionButton.Item>
            </ActionButton>
         </ViewContainer>
@@ -83,6 +88,10 @@ class AddressListScreen extends Component {
   }
 
   showBetaInfo(){
+
+  }
+
+  help(){
 
   }
 
@@ -115,8 +124,7 @@ class AddressListScreen extends Component {
 
 const styles = StyleSheet.create({
   listView: {
-    flex: 1,
-    marginTop: 45
+    flex: 1
   },
   actionButtonIcon: {
     fontSize: 20,

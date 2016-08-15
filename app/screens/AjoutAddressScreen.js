@@ -26,7 +26,7 @@ class AjoutAddressScreen extends Component{
 
     return(
       <ViewContainer>
-       <StatusBar title="Ajouter une addresse"/>
+       <StatusBar title="Ajouter une adresse"/>
        <View style={styles.inputs}>
            <TextInput
               style={styles.textEditAddressName}
@@ -36,7 +36,7 @@ class AjoutAddressScreen extends Component{
 
            <Text
             style={styles.textBelow}>
-           Donnez un nom de cette addresse. {"\n"}Ex: Airtel Siege
+           Donnez un nom à cette addresse. {"\n"}Ex: Airtel Siege
            </Text>
 
            <TextInput

@@ -1,6 +1,4 @@
 'use strict'
-// Press Cmd+R to reload
-// Cmd+D or shake for dev menu
 
 import React, { Component } from 'react';
 

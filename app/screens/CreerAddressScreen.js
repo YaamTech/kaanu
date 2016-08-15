@@ -32,7 +32,7 @@ class CreerAddressScreen extends Component{
   render(){
     return(
       <ViewContainer>
-       <StatusBar title="Créer une addresse"/>
+       <StatusBar title="Créer une adresse"/>
        <View style={styles.inputs}>
          <TextInput
             style={styles.textEditAddressName}
