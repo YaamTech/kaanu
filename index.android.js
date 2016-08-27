@@ -1,16 +1,16 @@
 'use strict'
-// Press Cmd+R to reload
-// Cmd+D or shake for dev menu
 
 import React, { Component } from 'react';
 
 import {
   AppRegistry,
   StyleSheet,
+  Text
 } from 'react-native';
 
 import AppNavigator from './app/navigation/AppNavigator'
 import Realm from './app/models/Realm'
+import AddressListScreen from './app/screens/AddressListScreen'
 
 const ownAddress = Realm.objects('CreateOwnAddress');
 

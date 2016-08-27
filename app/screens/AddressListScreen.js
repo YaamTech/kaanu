@@ -1,6 +1,4 @@
 'use strict'
-// Press Cmd+R to reload
-// Cmd+D or shake for dev menu
 
 import React, { Component } from 'react';
 import {
@@ -17,19 +15,7 @@ import StatusBar from '../components/StatusBar'
 import ListItem from '../components/ListItem'
 import ActionButton from 'react-native-action-button'
 
-// const addresses = [
-//   {addressName: "My House", addressWords: "sankara.rue.douze", ownerPhone: "77898753"},
-//   {addressName: "Airtel", addressWords: "nations.unies.airtel", ownerPhone: "50894532"}
-// ]
-
 const addresses = Realm.objects('Address');
-// Realm.write(()=>{
-//   Realm.delete(addresses);
-// });
-
-// Realm.write(()=>{
-//   Realm.create('Address', {addressName: "Airtel", addressWords: "nations.unies.airtel", ownerPhone: "50894532"});
-// });
 
 class AddressListScreen extends Component {
   constructor(props){
@@ -46,7 +32,7 @@ class AddressListScreen extends Component {
 
     return (
         <ViewContainer>
-        //  <StatusBar title="Adresses"/>
+         <StatusBar title="Votre répertoire d'adresses"/>
          <ListView
             dataSource={this.state.addressDataSource}
             renderRow={(address) => { return this.renderAddressView(address)}}
@@ -94,18 +80,6 @@ class AddressListScreen extends Component {
   help(){
 
   }
-
-  // allerA(){
-  //   // In the render part
-  //   // <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
-  //   //   title="Aller a"
-  //   //   onPress={() => {return this.allerA()}}>
-  //   //   <Text> Aller a </Text>
-  //   // </ActionButton.Item>
-  //   this.props.navigator.push({
-  //     ident: "AllerAddressScreen"
-  //   })
-  // }
 
   ajouterAddress(){
     this.props.navigator.push({

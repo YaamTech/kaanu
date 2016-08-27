@@ -26,7 +26,7 @@ class AjoutAddressScreen extends Component{
 
     return(
       <ViewContainer>
-       <StatusBar title="Ajouter une adresse"/>
+       <StatusBar title="Ajouter une adresse à votre répertoire"/>
        <View style={styles.inputs}>
            <TextInput
               style={styles.textEditAddressName}
