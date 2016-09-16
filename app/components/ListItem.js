@@ -12,12 +12,14 @@ import {
    render(){
      return(
        <View style={styles.addressRow}>
-         <TouchableOpacity>
+         <TouchableOpacity
+          onPress={this.props.onPress}>
            <Text>{this.props.data.addressName}</Text>
          </TouchableOpacity>
        </View>
      );
    }
+
  }
 
 

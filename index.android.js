@@ -10,7 +10,6 @@ import {
 
 import AppNavigator from './app/navigation/AppNavigator'
 import Realm from './app/models/Realm'
-import AddressListScreen from './app/screens/AddressListScreen'
 
 const ownAddress = Realm.objects('CreateOwnAddress');
 

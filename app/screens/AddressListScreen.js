@@ -45,11 +45,7 @@ class AddressListScreen extends Component {
              <Text>Aide</Text>
            </ActionButton.Item>
 
-           <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
-             title="Version beta"
-             onPress={() => {return this.showBetaInfo()}} >
-             <Text>Beta</Text>
-           </ActionButton.Item>
+
 
               <ActionButton.Item buttonColor="rgba(36, 206, 132, 1)"
                 title="Carnet d'adresses"
@@ -69,9 +65,25 @@ class AddressListScreen extends Component {
 
   renderAddressView(address){
       return(
-        <ListItem data={address}/>
+        <ListItem data={address}
+        onPress={() => {return this.itemInfos(address)}}/>
       );
   }
+
+  itemInfos(address){
+    this.props.navigator.push({
+      ident: "ItemInfosScreen",
+      data: address
+    })
+  //  Alert.alert(
+  //      'Ca marche',
+  //      address,
+  //        [
+  //          {text: 'OK', onPress: () => console.log('OK Pressed')}
+  //        ]
+  //  )
+  }
+
 
   showBetaInfo(){
 

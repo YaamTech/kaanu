@@ -3,13 +3,14 @@
 import React, { Component } from 'react';
 
 import {
-  Navigator,
+  Navigator
 } from 'react-native';
 
 import AddressListScreen from '../screens/AddressListScreen'
 import AjoutAddressScreen from '../screens/AjoutAddressScreen'
 import CreerAddressScreen from '../screens/CreerAddressScreen'
 import AllerAddressScreen from '../screens/AllerAddressScreen'
+import ItemInfosScreen from '../screens/ItemInfosScreen'
 
 class AppNavigator extends Component {
 
@@ -37,6 +38,13 @@ class AppNavigator extends Component {
       case "AllerAddressScreen":
         return (
           <AllerAddressScreen
+            {...globalNavigatorProps}
+          />
+        )
+      case "ItemInfosScreen":
+        return (
+          <ItemInfosScreen
+            data={route.data}
             {...globalNavigatorProps}
           />
         )

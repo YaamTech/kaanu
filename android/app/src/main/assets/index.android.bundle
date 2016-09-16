@@ -1496,7 +1496,6 @@ var _reactNative=require(43 /* react-native */);
 
 var _AppNavigator=require(642 /* ./app/navigation/AppNavigator */);var _AppNavigator2=babelHelpers.interopRequireDefault(_AppNavigator);
 var _Realm=require(644 /* ./app/models/Realm */);var _Realm2=babelHelpers.interopRequireDefault(_Realm);
-var _AddressListScreen=require(643 /* ./app/screens/AddressListScreen */);var _AddressListScreen2=babelHelpers.interopRequireDefault(_AddressListScreen);
 
 var ownAddress=_Realm2.default.objects('CreateOwnAddress');var
 
@@ -65816,7 +65815,7 @@ resizeMode:'contain'}});
 
 module.exports=NavigationHeaderBackButton;
 }, "NavigationHeaderBackButton");
-__d(527 /* react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon.png */, function(global, require, module, exports) {module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"fileSystemLocation":"/Volumes/Transcend/Web/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets","httpServerLocation":"/assets/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets","width":24,"height":24,"scales":[1,1.5,2,3,4],"files":["/Volumes/Transcend/Web/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@1x.android.png","/Volumes/Transcend/Web/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@1.5x.android.png","/Volumes/Transcend/Web/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@2x.android.png","/Volumes/Transcend/Web/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@3x.android.png","/Volumes/Transcend/Web/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@4x.android.png"],"hash":"d049eae53386f5bdf6b1eec17c66ac40","name":"back-icon","type":"png"});
+__d(527 /* react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon.png */, function(global, require, module, exports) {module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"fileSystemLocation":"/Volumes/Transcend/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets","httpServerLocation":"/assets/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets","width":24,"height":24,"scales":[1,1.5,2,3,4],"files":["/Volumes/Transcend/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@1x.android.png","/Volumes/Transcend/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@1.5x.android.png","/Volumes/Transcend/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@2x.android.png","/Volumes/Transcend/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@3x.android.png","/Volumes/Transcend/react/kaanu/node_modules/react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon@4x.android.png"],"hash":"d049eae53386f5bdf6b1eec17c66ac40","name":"back-icon","type":"png"});
 }, "react-native/Libraries/CustomComponents/NavigationExperimental/assets/back-icon.png");
 __d(528 /* NavigationHeaderStyleInterpolator */, function(global, require, module, exports) {
 
@@ -79160,7 +79159,8 @@ var _reactNative=require(43 /* react-native */);
 var _AddressListScreen=require(643 /* ../screens/AddressListScreen */);var _AddressListScreen2=babelHelpers.interopRequireDefault(_AddressListScreen);
 var _AjoutAddressScreen=require(663 /* ../screens/AjoutAddressScreen */);var _AjoutAddressScreen2=babelHelpers.interopRequireDefault(_AjoutAddressScreen);
 var _CreerAddressScreen=require(665 /* ../screens/CreerAddressScreen */);var _CreerAddressScreen2=babelHelpers.interopRequireDefault(_CreerAddressScreen);
-var _AllerAddressScreen=require(666 /* ../screens/AllerAddressScreen */);var _AllerAddressScreen2=babelHelpers.interopRequireDefault(_AllerAddressScreen);var
+var _AllerAddressScreen=require(666 /* ../screens/AllerAddressScreen */);var _AllerAddressScreen2=babelHelpers.interopRequireDefault(_AllerAddressScreen);
+var _ItemInfosScreen=require(667 /* ../screens/ItemInfosScreen */);var _ItemInfosScreen2=babelHelpers.interopRequireDefault(_ItemInfosScreen);var
 
 AppNavigator=function(_Component){babelHelpers.inherits(AppNavigator,_Component);function AppNavigator(){babelHelpers.classCallCheck(this,AppNavigator);return babelHelpers.possibleConstructorReturn(this,Object.getPrototypeOf(AppNavigator).apply(this,arguments));}babelHelpers.createClass(AppNavigator,[{key:'renderScreen',value:function renderScreen(
 
@@ -79188,7 +79188,14 @@ globalNavigatorProps));
 case"AllerAddressScreen":
 return(
 _react2.default.createElement(_AllerAddressScreen2.default,
-globalNavigatorProps));}
+globalNavigatorProps));
+
+
+case"ItemInfosScreen":
+return(
+_react2.default.createElement(_ItemInfosScreen2.default,babelHelpers.extends({
+data:route.data},
+globalNavigatorProps)));}
 
 
 
@@ -79255,10 +79262,6 @@ onPress:function onPress(){return _this2.help();}},
 _react2.default.createElement(_reactNative.Text,null,'Aide')),
 
 
-_react2.default.createElement(_reactNativeActionButton2.default.Item,{buttonColor:'rgba(36, 206, 132, 1)',
-title:'Version beta',
-onPress:function onPress(){return _this2.showBetaInfo();}},
-_react2.default.createElement(_reactNative.Text,null,'Beta')),
 
 
 _react2.default.createElement(_reactNativeActionButton2.default.Item,{buttonColor:'rgba(36, 206, 132, 1)',
@@ -79277,11 +79280,27 @@ _react2.default.createElement(_reactNative.Text,null,'Creer')))));
 
 }},{key:'renderAddressView',value:function renderAddressView(
 
-address){
+address){var _this3=this;
 return(
-_react2.default.createElement(_ListItem2.default,{data:address}));
+_react2.default.createElement(_ListItem2.default,{data:address,
+onPress:function onPress(){return _this3.itemInfos(address);}}));
+
+}},{key:'itemInfos',value:function itemInfos(
+
+address){
+this.props.navigator.push({
+ident:"ItemInfosScreen",
+data:address});
+
+
+
+
+
+
+
 
 }},{key:'showBetaInfo',value:function showBetaInfo()
+
 
 {
 
@@ -80517,12 +80536,14 @@ ListItem=function(_Component){babelHelpers.inherits(ListItem,_Component);functio
 {
 return(
 _react2.default.createElement(_reactNative.View,{style:styles.addressRow},
-_react2.default.createElement(_reactNative.TouchableOpacity,null,
+_react2.default.createElement(_reactNative.TouchableOpacity,{
+onPress:this.props.onPress},
 _react2.default.createElement(_reactNative.Text,null,this.props.data.addressName))));
 
 
 
 }}]);return ListItem;}(_react.Component);
+
 
 
 
@@ -81362,6 +81383,70 @@ marginTop:10}});
 
 module.exports=AllerAddressScreen;
 }, "kaanu/app/screens/AllerAddressScreen.js");
+__d(667 /* kaanu/app/screens/ItemInfosScreen.js */, function(global, require, module, exports) {'use strict';
+
+var _react=require(12 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
+var _reactNative=require(43 /* react-native */);
+
+
+
+
+
+
+
+var _Realm=require(644 /* ../models/Realm */);var _Realm2=babelHelpers.interopRequireDefault(_Realm);
+var _ViewContainer=require(658 /* ../components/ViewContainer */);var _ViewContainer2=babelHelpers.interopRequireDefault(_ViewContainer);
+var _StatusBar=require(659 /* ../components/StatusBar */);var _StatusBar2=babelHelpers.interopRequireDefault(_StatusBar);
+var _AddButton=require(664 /* ../components/AddButton */);var _AddButton2=babelHelpers.interopRequireDefault(_AddButton);
+
+var addresses=_Realm2.default.objects('Address');var
+
+ItemInfosScreen=function(_Component){babelHelpers.inherits(ItemInfosScreen,_Component);function ItemInfosScreen(){babelHelpers.classCallCheck(this,ItemInfosScreen);return babelHelpers.possibleConstructorReturn(this,Object.getPrototypeOf(ItemInfosScreen).apply(this,arguments));}babelHelpers.createClass(ItemInfosScreen,[{key:'render',value:function render()
+
+{
+return(
+_react2.default.createElement(_ViewContainer2.default,null,
+_react2.default.createElement(_StatusBar2.default,{title:this.props.data.addressName}),
+_react2.default.createElement(_reactNative.View,{style:styles.inputs},
+
+_react2.default.createElement(_reactNative.Text,{style:styles.addressWords},
+this.props.data.addressWords),
+
+
+_react2.default.createElement(_reactNative.Text,{style:styles.ownerPhone},
+this.props.data.ownerPhone)),
+
+
+
+_react2.default.createElement(_AddButton2.default,{title:'Supprimer l\'adresse',onPress:this.deleteAddress.bind(this)})));
+
+
+}},{key:'deleteAddress',value:function deleteAddress()
+
+{
+
+}}]);return ItemInfosScreen;}(_react.Component);
+
+
+
+var styles=_reactNative.StyleSheet.create({
+inputs:{
+flex:1},
+
+addressWords:{
+alignItems:"center",
+textAlign:"center",
+marginTop:30},
+
+ownerPhone:{
+alignItems:"center",
+textAlign:"center",
+marginTop:60}});
+
+
+
+module.exports=ItemInfosScreen;
+}, "kaanu/app/screens/ItemInfosScreen.js");
 ;require(191);
 ;require(0);
 //# sourceMappingURL=/index.android.map?platform=android
